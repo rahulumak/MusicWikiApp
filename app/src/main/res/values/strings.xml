@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GreedyGame Assignment</string>
+
+    <string name="album" >Album</string>
+    <string name="artist" >Artist</string>
+    <string name="track" >Track</string>
+</resources>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="artistModel"
+            type="com.rahulumak.greedygame.ggassignment.model.ArtistModel" />
+
+        <variable
+            name="tagAdapter"
+            type="com.rahulumak.greedygame.ggassignment.ui.albumDetails.TagAdapter" />
+
+        <variable
+            name="viewModel"
+            type="com.rahulumak.greedygame.ggassignment.ui.artistDetails.ArtistDetailsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.albumDetails.ArtistDetailsFragment">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgAlbum"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/default_image"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:loadUrl="@{artistModel.artist.image.get(2).text}" />
+
+        <TextView
+            android:id="@+id/txtArtistName"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#40000000"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@{artistModel.artist.name}"
+            android:textColor="@color/white"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="@+id/imgAlbum"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/txtFollowerCount"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#40000000"
+            android:gravity="center"
+            android:padding="5dp"
+            app:layout_constraintLeft_toLeftOf="@+id/txtfollowerName"
+            app:layout_constraintRight_toRightOf="@+id/txtfollowerName"
+            app:layout_constraintBottom_toTopOf="@+id/txtfollowerName"
+            android:text="@{artistModel.artist.stats.listeners}"
+            android:textColor="@color/white"
+            android:textStyle="bold|italic"
+             />
+        <TextView
+            android:id="@+id/txtfollowerName"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="Follower"
+            android:textColor="@color/white"
+            android:textStyle="bold|italic"
+            android:background="#40000000"
+            app:layout_constraintBottom_toBottomOf="@+id/imgAlbum"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txtPlayCountName" />
+        <TextView
+            android:id="@+id/txtPlayCount"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#40000000"
+            android:gravity="center"
+            android:padding="5dp"
+            app:layout_constraintLeft_toLeftOf="@+id/txtPlayCountName"
+            app:layout_constraintRight_toRightOf="@+id/txtPlayCountName"
+            app:layout_constraintBottom_toTopOf="@+id/txtPlayCountName"
+            android:text="@{artistModel.artist.stats.playcount}"
+            android:textColor="@color/white"
+            android:textStyle="bold|italic"
+            />
+        <TextView
+            android:id="@+id/txtPlayCountName"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="PlayCount"
+            android:background="#40000000"
+            android:textColor="@color/white"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="@+id/imgAlbum"
+            app:layout_constraintEnd_toStartOf="@+id/txtfollowerName"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewGenre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/md_white_1000"
+            app:layout_constraintTop_toBottomOf="@+id/imgAlbum" />
+        <!--            bind:adapter="@{tagAdapter}"-->
+        <!--            bind:tagItems="@{viewModel.tagList}"-->
+
+        <TextView
+            android:id="@+id/txtAlbumDescription"
+            style="@style/TextAppearance.AppCompat.Body2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{artistModel.artist.bio.summary}"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerViewGenre" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

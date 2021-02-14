@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/navigation_genre_list"
+    android:id="@+id/project_navigation">
+    <fragment
+        android:id="@+id/navigation_genre_list"
+        android:name="com.rahulumak.greedygame.ggassignment.ui.genreList.GenreListFragment"
+        android:label="Genre List"
+        tools:layout="@layout/fragment_genre_list">
+        <action
+            android:id="@+id/action_navigation_genre_list_to_navigation_genre_details"
+            app:destination="@id/navigation_genre_details" />
+    </fragment>
+    <fragment android:id="@+id/navigation_genre_details"
+        android:name="com.rahulumak.greedygame.ggassignment.ui.genreDetails.GenreDetailsFragment"
+        android:label="Genre Details"
+        tools:layout="@layout/genre_details_fragment">
+        <action
+            android:id="@+id/action_navigation_genre_details_to_navigation_artist_details"
+            app:destination="@id/navigation_artist_details" />
+        <action
+            android:id="@+id/action_navigation_genre_details_to_navigation_album_details"
+            app:destination="@id/navigation_album_details" />
+        <argument
+            android:name="genreName"
+            app:argType="string" />
+    </fragment>
+    <fragment android:id="@+id/navigation_artist_details"
+        android:name="com.rahulumak.greedygame.ggassignment.ui.artistDetails.ArtistDetailsFragment"
+        android:label="Artist Details"
+        tools:layout="@layout/artist_details_fragment">
+        <argument
+            android:name="artistName"
+            app:argType="string" />
+    </fragment>
+    <fragment android:id="@+id/navigation_album_details"
+        android:name="com.rahulumak.greedygame.ggassignment.ui.albumDetails.AlbumDetailFragment"
+        android:label="Album Details"
+        tools:layout="@layout/album_detail_fragment">
+        <argument
+            android:name="albumName"
+            app:argType="string" />
+        <argument
+            android:name="artistName"
+            app:argType="string" />
+    </fragment>
+
+</navigation>
